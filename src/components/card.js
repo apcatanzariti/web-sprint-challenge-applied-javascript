@@ -1,4 +1,6 @@
-const Card = (article) => {
+import axios from "axios";
+
+const Card = ({ headline, authorPhoto, authorName }) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,17 +19,60 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('card');
+
+  const theHeadline = document.createElement('div');
+  theHeadline.classList.add('headline');
+  theHeadline.textContent = headline;
+
+  const author = document.createElement('div');
+  author.classList.add('author');
+
+  const imgContainer = document.createElement('div');
+  imgContainer.classList.add('img-container');
+  
+  const authorImg = document.createElement('img');
+  authorImg.src = authorPhoto;
+
+  const theName = document.createElement('span');
+  theName.textContent = authorName;
+
+  cardDiv.appendChild(theHeadline);
+  cardDiv.appendChild(author);
+  author.appendChild(imgContainer);
+  imgContainer.appendChild(authorImg);
+  author.appendChild(theName);
+
+  return cardDiv;
 }
+
+// console.log(Card({headline: 'headline', authorPhoto: 'photo', authorName: 'author'}));
 
 const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
-  // Implement this function that takes a css selector as its only argument.
+  // Implement this function that takes a css selector as its only argument. .cards-container
   // It should obtain articles from this endpoint: `https://lambda-times-api.herokuapp.com/articles`
   // However, the articles do not come organized in a single, neat array. Inspect the response closely!
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  const appendCards = document.querySelector(selector);
+
+  axios
+  .get('https://lambda-times-api.herokuapp.com/articles')
+  .then((response) =>{
+    // console.log(response.data.articles.javascript);
+    const javascriptArray = response.data.articles.javascript;
+    javascriptArray.forEach(item =>{
+      appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    })
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 }
 
 export { Card, cardAppender }
