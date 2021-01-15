@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Tabs = (['javascript', 'bootstrap', 'technology']) => {
+const Tabs = (topics) => {
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -19,9 +19,9 @@ const Tabs = (['javascript', 'bootstrap', 'technology']) => {
   const topicsDiv = document.createElement('div');
   topicsDiv.classList.add('topics');
 
-  const tab1 = document.createElement('div');
-  tab1.classList.add('tab');
-  tab1.textContent = topics;
+  const tab = document.createElement('div');
+  tab.classList.add('tab');
+  tab.textContent = topics;
 
   // const tab2 = document.createElement('div');
   // tab2.classList.add('tab');
@@ -31,9 +31,9 @@ const Tabs = (['javascript', 'bootstrap', 'technology']) => {
   // tab3.classList.add('tab');
   // tab3.textContent = topics;
 
-  topicsDiv.appendChild(tab1);
-  topicsDiv.appendChild(tab2);
-  topicsDiv.appendChild(tab3);
+  topicsDiv.appendChild(tab);
+  // topicsDiv.appendChild(tab2);
+  // topicsDiv.appendChild(tab3);
 
   return topicsDiv;
 }
@@ -53,8 +53,6 @@ const tabsAppender = (selector) => {
   .then ((response) => {
     const appendTabs = document.querySelector(selector);
     const arrayData = response.data.topics;
-    // console.log(appendTabs);
-    // console.log(arrayData);
     arrayData.forEach(element =>{
       appendTabs.appendChild(Tabs(element));
     })

@@ -66,7 +66,11 @@ const cardAppender = (selector) => {
   .then((response) =>{
     // console.log(response.data.articles.javascript);
     const javascriptArray = response.data.articles.javascript;
+    const jqueryArray = response.data.articles.jquery;
     javascriptArray.forEach(item =>{
+      appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    })
+    jqueryArray.forEach(item =>{
       appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
     })
   })
