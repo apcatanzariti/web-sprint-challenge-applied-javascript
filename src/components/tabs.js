@@ -23,17 +23,7 @@ const Tabs = (topics) => {
   tab.classList.add('tab');
   tab.textContent = topics;
 
-  // const tab2 = document.createElement('div');
-  // tab2.classList.add('tab');
-  // tab2.textContent = topics;
-
-  // const tab3 = document.createElement('div');
-  // tab3.classList.add('tab');
-  // tab3.textContent = topics;
-
   topicsDiv.appendChild(tab);
-  // topicsDiv.appendChild(tab2);
-  // topicsDiv.appendChild(tab3);
 
   return topicsDiv;
 }
@@ -41,7 +31,7 @@ const Tabs = (topics) => {
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------
-  // Implement this function which takes a css selector as its only argument. .tabs-container
+  // Implement this function which takes a css selector as its only argument. .tabs-container is the selector
   // It should obtain topics from this endpoint: `https://lambda-times-api.herokuapp.com/topics`
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
