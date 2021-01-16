@@ -64,15 +64,31 @@ const cardAppender = (selector) => {
   axios
   .get('https://lambda-times-api.herokuapp.com/articles')
   .then((response) =>{
-    // console.log(response.data.articles.javascript);
-    const javascriptArray = response.data.articles.javascript;
-    const jqueryArray = response.data.articles.jquery;
-    javascriptArray.forEach(item =>{
-      appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
-    })
-    jqueryArray.forEach(item =>{
-      appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
-    })
+
+    const x = response.data.articles;
+    console.log(x);
+
+    // console.log(response.data.articles.javascript); 
+    // const javascriptArray = response.data.articles.javascript;
+    // javascriptArray.forEach(item =>{
+    //   appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    // })
+    // const bootstrapArray = response.data.articles.bootstrap;
+    // bootstrapArray.forEach(item =>{
+    //   appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    // })
+    // const jqueryArray = response.data.articles.jquery;
+    // jqueryArray.forEach(item =>{
+    //   appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    // })
+    // const nodeArray = response.data.articles.node;
+    // nodeArray.forEach(item =>{
+    //   appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    // })
+    // const technologyArray = response.data.articles.technology;
+    // technologyArray.forEach(item =>{
+    //   appendCards.appendChild(Card({ headline: item.headline, authorPhoto: item.authorPhoto, authorName: item.authorName }));
+    // })
   })
   .catch((error) => {
     console.log(error);
